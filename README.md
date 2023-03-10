@@ -1,5 +1,5 @@
-#Starter Package
+#Backend Foto Agenda
 
-This its a simple python boilerplate package start to code.
+In this repo, will set up the API for the Foto Agenda
 
-Just For quick implement a project
+using FASTAPI and tortoise-orm

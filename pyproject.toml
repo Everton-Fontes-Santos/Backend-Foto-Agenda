@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "starter"
+name = "FotoAgenda"
 version = "0.1.0"
 description = ""
 authors = ["Everton Fontes <efs.fontes@gmail.com>"]
@@ -9,6 +9,12 @@ readme = "README.md"
 python = "^3.11"
 rich = "^13.3.2"
 pydantic = "^1.10.5"
+fastapi = "^0.93.0"
+tortoise-orm = "^0.19.3"
+python-dotenv = "^1.0.0"
+python-multipart = "^0.0.6"
+uvicorn = "^0.21.0"
+httpx = "^0.23.3"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -28,7 +34,7 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.pytest.ini_options]
-pythonpath = "."
+pythonpath = "FotoAgenda"
 addopts = "--doctest-modules"
 
 [tool.isort]
@@ -36,8 +42,8 @@ profile = "black"
 line_length = 79
 
 [tool.taskipy.tasks]
-lint = "black . && isort --check --diff . && prospector --with-tool pydocstyle --doc-warning"
+lint = "black . && isort . && prospector --with-tool pydocstyle --doc-warning"
 docs = "mkdocs serve"
 pre_test = "task lint"
-test = "pytest -s -x --cov=starter -vv"
+test = "pytest -s -x --cov=FotoAgenda -vv"
 post_test = "coverage html"

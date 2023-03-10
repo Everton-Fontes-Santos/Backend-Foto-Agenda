@@ -2,7 +2,7 @@ from tortoise import fields
 from tortoise.models import Model
 
 
-class clientModel(Model):
+class ClientModel(Model):
     id = fields.IntField(pk=True)
     first_name = fields.CharField(max_length=254)
     last_name = fields.CharField(max_length=254)

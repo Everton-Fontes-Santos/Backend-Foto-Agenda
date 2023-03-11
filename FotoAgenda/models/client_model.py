@@ -1,4 +1,5 @@
 from tortoise import fields
+from tortoise.contrib.pydantic import pydantic_model_creator
 from tortoise.models import Model
 
 
@@ -11,3 +12,6 @@ class ClientModel(Model):
     instagram = fields.CharField(max_length=254)
     facebook = fields.CharField(max_length=254)
     cpf = fields.CharField(max_length=11, unique=True)
+
+
+Client_Pydantic = pydantic_model_creator(ClientModel, name="Client")

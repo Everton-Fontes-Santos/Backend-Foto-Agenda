@@ -1,15 +1,11 @@
+import uvicorn
 from config.variables import config
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.responses import RedirectResponse
 from tortoise.contrib.fastapi import register_tortoise
 
-# from controllers.debitController import debit_router
-# from controllers.tokenController import token_router
 app = FastAPI()
-
-# app.include_router(debit_router, tags=['Debits'])
-# app.include_router(token_router, tags=['Token'])
 
 
 app.add_middleware(
@@ -38,3 +34,6 @@ register_tortoise(
     generate_schemas=True,
     add_exception_handlers=True,
 )
+
+if __name__ == "__main__":
+    uvicorn.run("app:app", host="127.0.0.1", port=config.PORT, log_level="info")

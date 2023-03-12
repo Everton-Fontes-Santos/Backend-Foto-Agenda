@@ -2,8 +2,10 @@ import uvicorn
 from config.variables import config
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from models.client_model import Client_Pydantic, ClientModel
 from starlette.responses import RedirectResponse
 from tortoise.contrib.fastapi import register_tortoise
+from utils.api.post_items import post_items
 
 app = FastAPI()
 
@@ -25,6 +27,12 @@ async def redirect_to_doc():
 @app.get("/healthcheck")
 async def healthcheck():
     return {"message": "ok"}
+
+
+@post_items(ClientModel, Client_Pydantic)
+@app.post("/item")
+async def post(items: list[Client_Pydantic]):
+    ...
 
 
 register_tortoise(

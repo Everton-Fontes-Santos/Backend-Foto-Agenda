@@ -20,7 +20,11 @@ def event_loop():
 def client() -> Generator:
     initializer(
         db_url=DB_URL,
-        modules=config.tortoise_models,
+        modules=config.tortoise_models
+        # modules=[
+        #     "FotoAgenda.models.client_model",
+        #     "FotoAgenda.models.pack_services_model",
+        # ],
     )
 
     with TestClient(app) as c:

@@ -8,8 +8,10 @@ pytest_plugins = ("pytest_asyncio",)
 
 @pytest.mark.asyncio
 async def test_return_list(client):
+    length = len(await ClientModel.all())
+
     @get_all_itens(model=ClientModel, pydantic=Client_Pydantic)
     async def to_decorated():
         ...
 
-    assert len(await to_decorated()) == 1
+    assert len(await to_decorated()) == length

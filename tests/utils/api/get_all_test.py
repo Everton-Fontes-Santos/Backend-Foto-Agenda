@@ -7,9 +7,9 @@ pytest_plugins = ("pytest_asyncio",)
 
 
 @pytest.mark.asyncio
-async def test_return_empty_list(client):
+async def test_return_list(client):
     @get_all_itens(model=ClientModel, pydantic=Client_Pydantic)
-    async def to_decorated(items):
-        assert items == []
+    async def to_decorated():
+        ...
 
-    await to_decorated()
+    assert len(await to_decorated()) == 1
